@@ -16,7 +16,6 @@ function Trakteer() {
           src='https://cdn.trakteer.id/images/embed/trbtn-red-1.png'
           alt='trakteer'
           layout='fill'
-          priority
         />
       </div>
     </div>
