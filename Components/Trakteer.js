@@ -1,8 +1,10 @@
 import React from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import TrakteerIcon from '../public/Trakteer.png';
 function Trakteer() {
   const router = useRouter();
+
   return (
     <div className=''>
       <h1 className='text-4xl font-bold text-white mb-4'>
@@ -12,11 +14,7 @@ function Trakteer() {
         className='relative w-36 h-12 hover:cursor-pointer'
         onClick={(e) => router.push('https://trakteer.id/derryderajat/tip')}
       >
-        <Image
-          src='https://cdn.trakteer.id/images/embed/trbtn-red-1.png'
-          alt='trakteer'
-          layout='fill'
-        />
+        <Image src={TrakteerIcon} alt='trakteer' layout='fill' />
       </div>
     </div>
   );
