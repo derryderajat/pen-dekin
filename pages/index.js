@@ -95,7 +95,7 @@ export default function Home() {
               Let&#39;s Pen-dekin
             </button>
           </div>
-          <div className=' h-96 w-4/5 mx-auto md:mx-0 md:ml-32 rounded-md mt-12 sm:w-96 hidden md:block'>
+          <div className=' h-96 w-4/5  md:mx-0 md:ml-32 rounded-md mt-12 sm:w-96 hidden md:block'>
             <h2 className='text-2xl text-white font-semibold'>Welcome to</h2>
             <h1 className='text-4xl -mt-2 font-bold text-white'>PEN-DEKIN</h1>
             <h3 className='mt-6 text-xl text-white font-semibold'>
@@ -122,7 +122,7 @@ export default function Home() {
               </li>
             </ul>
           </div>
-          <div className='  h-32 w-64 mx-auto md:mx-0 md:ml-32 rounded-md mt-12 sm:w-1/5 '>
+          <div className=' h-64 w-4/5 mx-auto md:mx-0  rounded-md mt-12 sm:w-64 '>
             <Trakteer />
           </div>
         </section>

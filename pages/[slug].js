@@ -143,7 +143,7 @@ function Mine({ data }) {
                 </li>
               </ul>
             </div>
-            <div className='  h-32 w-64 mx-auto md:mx-0 md:ml-32 rounded-md mt-12 sm:w-1/5 '>
+            <div className=' h-64 w-4/5 mx-auto md:mx-0  rounded-md mt-12 sm:w-64 '>
               <Trakteer />
             </div>
           </section>
