@@ -123,7 +123,19 @@ export default function Home() {
             </ul>
           </div>
           <div className=' h-64 w-4/5 mx-auto md:mx-0  rounded-md mt-12 sm:w-64 '>
-            <Trakteer />
+            <h1 className='text-3xl font-bold text-white mb-4'>
+              Help me buy a Coffee:
+            </h1>
+            <button
+              className='bg-[#BE1E2D]  rounded-md hover:cursor-pointer w-fit h-fit px-4 py-2 flex flex-row items-center'
+              onClick={(e) =>
+                router.push('https://trakteer.id/derryderajat/tip')
+              }
+            >
+              <h2 className='ml-2 font-semibold text-white animate-pulse'>
+                Support me in Trakteer
+              </h2>
+            </button>
           </div>
         </section>
       </main>
