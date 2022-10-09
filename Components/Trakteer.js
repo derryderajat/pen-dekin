@@ -11,7 +11,7 @@ function Trakteer() {
         Help me buy a Coffee:
       </h1>
       <div
-        className='relative w-36 h-12 hover:cursor-pointer'
+        className='relative w-24 h-8 max-w-36 max-h-12 md:w-36 md:h-12 hover:cursor-pointer'
         onClick={(e) => router.push('https://trakteer.id/derryderajat/tip')}
       >
         <Image src={TrakteerIcon} alt='trakteer' layout='fill' />
