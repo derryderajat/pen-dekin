@@ -2,17 +2,60 @@ import Head from 'next/head';
 import { FaLink } from 'react-icons/fa';
 import { FaPencilRuler } from 'react-icons/fa';
 import { FaCheck } from 'react-icons/fa';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import Trakteer from '../Components/Trakteer';
 export default function Home() {
+  const router = useRouter();
+  const [longURL, setLongURL] = useState('');
+  const [alias, setAlias] = useState(undefined);
+
+  const handleClick = async (e) => {
+    const _newURL = longURL;
+
+    if (alias) {
+      if (alias.length < 5) {
+        alert('Input Alias min 5 chars');
+        return false;
+      } else {
+        const response = await fetch('/api/url', {
+          method: 'POST',
+          headers: {
+            content: 'application/json',
+          },
+          body: JSON.stringify({ url: _newURL, code: alias }),
+        });
+        setLongURL = '';
+        setAlias(undefined);
+        // console.log('Indedx:', response);
+        router.push({ pathname: '/app' });
+
+        return response;
+      }
+    } else {
+      const response = await fetch('/api/url', {
+        method: 'POST',
+        headers: {
+          content: 'application/json',
+        },
+        body: JSON.stringify({ url: _newURL }),
+      });
+      setLongURL = '';
+      // console.log('Indedx:', response);
+      router.push('/app');
+      return response;
+    }
+  };
   return (
     <div className='bg-gradient-20 from-cyan-500 to-orange-600  h-screen  w-full mx-auto'>
       <Head>
         <title>Pen-dekin</title>
       </Head>
-      <main className=''>
+      <main className='h-screen'>
         <h1 className='text-4xl font-bold cursor-pointer text-[#F8F9FA] pl-8 pt-12 hover:underline '>
           PEN-DEKIN
         </h1>
-        <section className='flex flex-row'>
+        <section className='flex flex-wrap flex-row'>
           <div className='bg-[#F8F9FA] h-fit pb-8 w-96 mx-auto md:mx-0 md:ml-32 rounded-md mt-12 sm:w-96'>
             <div>
               <h1 className='text-xl mb-2 ml-4 pt-4 flex flex-row items-center '>
@@ -24,6 +67,9 @@ export default function Home() {
               <input
                 className='w-4/5  ml-6 h-14 pl-2 rounded-sm bg-[#F8F9FA] focus:bg-white outline-none border border-gray-200'
                 type='text'
+                value={longURL}
+                onChange={(e) => setLongURL(e.target.value)}
+                required
               />
             </div>
             <div>
@@ -34,11 +80,18 @@ export default function Home() {
                 Alias
               </h1>
               <input
+                value={alias ?? ''}
+                onChange={(e) => setAlias(e.target.value)}
                 className='w-4/5  ml-6 h-14 pl-2 rounded-sm bg-[#F8F9FA] focus:bg-white outline-none border border-gray-200'
                 type='text'
               />
             </div>
-            <button className='h-12 w-4/5 mt-6 rounded-md ml-9 bg-orange-600 hover:bg-orange-800 text-white font-semibold'>
+            {/* Button */}
+            <button
+              className='h-12 w-4/5 mt-6 rounded-md ml-9 bg-orange-600 hover:bg-orange-800 text-white font-semibold'
+              type='submit'
+              onClick={handleClick}
+            >
               Let&#39;s Pen-dekin
             </button>
           </div>
@@ -68,6 +121,9 @@ export default function Home() {
                 </span>
               </li>
             </ul>
+          </div>
+          <div className='  h-32 w-64 mx-auto md:mx-0 md:ml-32 rounded-md mt-12 sm:w-1/5 '>
+            <Trakteer />
           </div>
         </section>
       </main>
